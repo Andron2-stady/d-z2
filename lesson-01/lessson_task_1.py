@@ -1,5 +1,5 @@
 
-my_name = "GigaChat"
+my_name = "Андрон"
 
 print(my_name)
 
