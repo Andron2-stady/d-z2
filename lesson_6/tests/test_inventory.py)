@@ -1,0 +1,28 @@
+import pytest
+
+
+def test_purchase_flow(firefox_driver):
+    # 1. Авторизация
+    login_page = LoginPage(firefox_driver)
+    login_page.open()
+    login_page.login("standard_user", "secret_sauce")
+
+    # 2. Добавление товаров
+    inventory_page = InventoryPage(firefox_driver)
+    inventory_page.add_backpack()
+    inventory_page.add_bolt_tshirt()
+    inventory_page.add_onesie()
+
+    # 3. Переход в корзину и оформление
+    inventory_page.go_to_cart()
+    
+    cart_page = CartPage(firefox_driver)
+    cart_page.click_checkout()
+
+    # 4. Заполнение данных
+    checkout_page = CheckoutPage(firefox_driver)
+    checkout_page.fill_form("Ivan", "Ivanov", "123456")
+
+    # 5. Проверка суммы
+    total_text = checkout_page.get_total()
+    assert total_text == "Total: $58.29"
