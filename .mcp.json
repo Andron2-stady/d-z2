@@ -1,0 +1,8 @@
+{
+    "mcpServers": {
+        "seleniumboot": {
+            "command": "C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python315\\Scripts\\seleniumboot-mcp.exe",
+            "args": []
+        }
+    }
+}
